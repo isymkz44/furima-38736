@@ -9,15 +9,13 @@
 | first_name_reading | string | null: false                    |
 | last_name_reading  | string | null: false                    |
 | nickname           | string | null: false                    |
-| email              | string | null: false, foreign_key: true |
+| email              | string | null: false, unique: true      |
 | birthday           | date   | null: false                    |
 | encrypted_password | string | null: false                    |
 ## Association
 has_many :items
 has_many :buys
-belongs_to_active_hash :birthday_year_id 
-belongs_to_active_hash :birthday_month_id 
-belongs_to_active_hash :birthday_day_id
+
 
 ## items テーブル
 
@@ -31,11 +29,11 @@ belongs_to_active_hash :birthday_day_id
 | shipping_date_id   | integer     | null: false                     |
 | shipping_charge_id | integer     | null: false                     |
 | prefecture_id      | integer     | null: false                     |
-| user_id            | references  | null: false,  foreign_key: true |
+| user               | references  | null: false,  foreign_key: true |
 
 ## Association
-belongs_to :users
-has_one :buys
+belongs_to :user
+has_one :buy
 belongs_to_active_hash :category
 belongs_to_active_hash :condition
 belongs_to_active_hash :shipping_date
@@ -46,12 +44,12 @@ belongs_to_active_hash :prefecture
 
 | Column         | Type       | Options                        |
 | ---------------| ---------- | ------------------------------ |
-| user_id        | references | null: false, foreign_key: true |
-| item_id        | references | null: false, foreign_key: true |
+| user           | references | null: false, foreign_key: true |
+| item           | references | null: false, foreign_key: true |
 ## Association
-belongs_to :users
-belongs_to :items
-has_one :addresseses
+belongs_to :user
+belongs_to :item
+has_one :address
 
 ## addresses テーブル
 
@@ -63,7 +61,7 @@ has_one :addresseses
 | house_number    | string     | null: false                   |
 | building_name   | string     |                               |
 | phone_number    | string     | null: false                   |
-| buy_id          | integer    | null: false,foreign_key: true |
+| buy             | references    | null: false,foreign_key: true |
 ## Association
-belongs_to :buys
+belongs_to :buy
 belongs_to_active_hash :prefecture
