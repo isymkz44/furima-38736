@@ -4,15 +4,29 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
           :recoverable, :rememberable, :validatable
 
-  validates :password,            presence: true
-  validates :first_name,          presence: true
-  validates :last_name,           presence: true
-  validates :first_name_reading,  presence: true
-  validates :last_name_reading,   presence: true
-  validates :email,               presence: true, uniqueness: true
+          VALID_PASSWORD_REGEX = /\A(?=.*?[a-z])(?=.*?[\d])[a-z\d]+\z/i
+          VALID_FULL_WIDTH_REGEX = /\A[ぁ-んァ-ン一-龥]/
+          VALID_FULL_WIDTH_KANA_REGEX = /\A[ァ-ヶー－]+\z/
+
+
+  validates :password,            presence: true, 
+                                  length: { minimum: 6 } ,
+                                  format: { with: VALID_PASSWORD_REGEX,message:" is invalid. Include both letters and numbers"}
+  validates :first_name,          presence: true, 
+                                  format: { with: VALID_FULL_WIDTH_REGEX, message:"is invalid. Input full-width characters"}
+  validates :last_name,           presence: true,
+                                  format: { with: VALID_FULL_WIDTH_REGEX, message:"is invalid. Input full-width characters"}
+  validates :first_name_reading,  presence: true,
+                                  format: { with: VALID_FULL_WIDTH_KANA_REGEX, message:"is invalid. Input full-width katakana characters"}
+  validates :last_name_reading,   presence: true,
+                                  format: { with: VALID_FULL_WIDTH_KANA_REGEX, message:"is invalid. Input full-width katakana characters"}
+  validates :email,               presence: true, uniqueness: true 
   validates :nickname,            presence: true
   validates :birthday,            presence: true
 
+
   has_many :items
   has_many :buys
+
+
 end
