@@ -9,8 +9,7 @@ class User < ApplicationRecord
           VALID_FULL_WIDTH_KANA_REGEX = /\A[ァ-ヶー－]+\z/
 
 
-  validates :password,            presence: true, 
-                                  length: { minimum: 6 } ,
+  validates :password,            presence: true,                                
                                   format: { with: VALID_PASSWORD_REGEX,message:" is invalid. Include both letters and numbers"}
   validates :first_name,          presence: true, 
                                   format: { with: VALID_FULL_WIDTH_REGEX, message:"is invalid. Input full-width characters"}
@@ -20,7 +19,7 @@ class User < ApplicationRecord
                                   format: { with: VALID_FULL_WIDTH_KANA_REGEX, message:"is invalid. Input full-width katakana characters"}
   validates :last_name_reading,   presence: true,
                                   format: { with: VALID_FULL_WIDTH_KANA_REGEX, message:"is invalid. Input full-width katakana characters"}
-  validates :email,               presence: true, uniqueness: true 
+  validates :email,               presence: true
   validates :nickname,            presence: true
   validates :birthday,            presence: true
 
