@@ -10,7 +10,7 @@ class User < ApplicationRecord
 
 
   validates :password,            presence: true,                                
-                                  format: { with: VALID_PASSWORD_REGEX,message:" is invalid. Include both letters and numbers"}
+                                  format: { with: VALID_PASSWORD_REGEX,message:"is invalid. Include both half-width letters and half-width numbers"}
   validates :first_name,          presence: true, 
                                   format: { with: VALID_FULL_WIDTH_REGEX, message:"is invalid. Input full-width characters"}
   validates :last_name,           presence: true,
