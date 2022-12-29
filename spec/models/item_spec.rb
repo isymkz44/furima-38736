@@ -1,4 +1,4 @@
-#先行作業
+# 先行作業
 # require 'rails_helper'
 
 # RSpec.describe Item, type: :model do

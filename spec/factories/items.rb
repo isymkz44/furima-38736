@@ -1,6 +1,6 @@
-#先行作業
+# 先行作業
 # FactoryBot.define do
 #   factory :item do
-    
+
 #   end
 # end
