@@ -1,5 +1,6 @@
 class ApplicationController < ActionController::Base
-  before_action :basic_auth, :configure_permitted_parameters, if: :devise_controller?  # もしdeviseに関するコントローラーの処理であれば、そのときだけconfigure_permitted_parametersメソッドを実行するように設定
+  before_action :basic_auth
+  before_action :configure_permitted_parameters, if: :devise_controller?
 
   private   # Before_actionで記述するもの（特にApplicationController内に記述するもの）はストロングパタメーター、即ちprivate以下に記述することになる
 
