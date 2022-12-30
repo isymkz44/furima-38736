@@ -50,7 +50,13 @@ RSpec.describe User, type: :model do
         @user.valid?
         expect(@user.errors.full_messages).to include('Password is invalid. Include both half-width letters and half-width numbers')
       end
-      it 'パスワードが英数字混合でない場合は登録できない' do
+      it "パスワードは数字のみの場合では登録できない" do
+        @user.password = "111111111111"
+        @user.password_confirmation = '111111111111'
+        @user.valid?
+        expect(@user.errors.full_messages).to include('Password is invalid. Include both half-width letters and half-width numbers')
+      end
+      it 'パスワードが英字のみの場合は登録できない' do
         @user.password = 'aaaaaaaa'
         @user.password_confirmation = 'aaaaaaaa'
         @user.valid?
