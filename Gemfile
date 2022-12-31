@@ -66,3 +66,5 @@ gem 'rspec-rails', '~> 4.0.0'
 group :development do
   gem 'rubocop', require: false
 end
+
+gem 'active_hash'
