@@ -30,6 +30,7 @@ class Item < ApplicationRecord
 
   belongs_to :user
   has_one :buy
+  has_one_attached :image #複数イメージを保存する？としたら違うメソッドに
 
   
 end
