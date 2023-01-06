@@ -24,28 +24,28 @@ RSpec.describe Item, type: :model do
          @item.valid?
          expect(@item.errors.full_messages).to include("Name can't be blank")
       end
-      it "カテゴリーが空だと出品できない" do
-         @item.category_id = ""
+      it "カテゴリーが--だと出品できない" do
+         @item.category_id = "0"
          @item.valid?
          expect(@item.errors.full_messages).to include("Category can't be blank")
       end
-      it "商品の状態が空だと出品できない" do
-         @item.condition_id  = ""
+      it "商品の状態が--だと出品できない" do
+         @item.condition_id  = "0"
          @item.valid?
          expect(@item.errors.full_messages).to include("Condition can't be blank")
       end
-      it "配送料の負担が空だと出品できない" do
-         @item.shipping_charge_id = ""
+      it "配送料の負担が--だと出品できない" do
+         @item.shipping_charge_id = "0"
          @item.valid?
          expect(@item.errors.full_messages).to include("Shipping charge can't be blank")
       end
-      it "発送元の地域が空だと出品できない" do
-         @item.prefecture_id  = ""
+      it "発送元の地域が--だと出品できない" do
+         @item.prefecture_id  = "0"
          @item.valid?
          expect(@item.errors.full_messages).to include("Prefecture can't be blank")
       end
-      it "発送までの日数が空だと出品できない" do
-         @item.shipping_date_id = ""
+      it "発送までの日数が--だと出品できない" do
+         @item.shipping_date_id = "0"
          @item.valid?
          expect(@item.errors.full_messages).to include("Shipping date can't be blank")
       end
@@ -74,7 +74,10 @@ RSpec.describe Item, type: :model do
          @item.valid?
          expect(@item.errors.full_messages).to include("Price is invalid")
       end
-      it "" do
+      it "userが紐づいていなければ登録できない" do
+         @item.user = nil
+         @item.valid?
+         expect(@item.errors.full_messages).to include("User must exist")
       end
    end
   end
