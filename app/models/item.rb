@@ -3,8 +3,8 @@ class Item < ApplicationRecord
   belongs_to :category
   belongs_to :condition
   belongs_to :prefecture
-  belongs_to :Shipping_charge
-  belongs_to :Shipping_date
+  belongs_to :shipping_charge
+  belongs_to :shipping_date
 
   validates :category_id,
             :condition_id,
