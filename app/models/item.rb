@@ -21,9 +21,7 @@ class Item < ApplicationRecord
 
   validates :name,                presence: true
   validates :description,         presence: true
-  validates :price,               presence: true,numericality: { only_integer: true, greater_than_or_equal_to: 300, less_than_or_equal_to: 9999999, message:"is invalid" },
-                                  # numericality: { in : 300..9999999 } #←inオプションを使用するとこんな感じ？
-                                  format: { with: /\A[0-9]+\z/, message: "is invalid. Input half-width numbers" }
+  validates :price,               presence: true,numericality: { only_integer: true, greater_than_or_equal_to: 300, less_than_or_equal_to: 9999999, message:"is invalid" }
   validates :category_id,         presence: true
   validates :condition_id,        presence: true
   validates :shipping_date_id,    presence: true
