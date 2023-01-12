@@ -1,3 +1,1 @@
-class BuysController < ApplicationController
-end
-
+class BuysController < ApplicationControll
