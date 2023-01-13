@@ -1,5 +1,6 @@
 class BuysController < ApplicationController
   def new
+    @item = Item.find(params[:item_id])#←←”id"だと、orderモデルのparamsのIDを取得することになるため、itemのidが欲しい場合はこう記述
     @buy_address = BuyAddress.new
   end
 
