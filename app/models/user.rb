@@ -20,6 +20,6 @@ class User < ApplicationRecord
   validates :nickname,            presence: true
   validates :birthday,            presence: true
 
-  has_many :items
-  has_many :buys
+  has_many :items, dependent: :destroy
+  has_many :buys, dependent: :destroy
 end
