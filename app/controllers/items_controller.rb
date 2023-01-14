@@ -2,6 +2,7 @@ class ItemsController < ApplicationController
   before_action :authenticate_user!, only: [:new, :create,:edit,:update,:destroy ]
   before_action :set_item, only: [:show, :edit, :update, :destroy]
   before_action :belong_item, only: [:edit, :destroy ]
+  before_action :soldout_item, only: [:edit]
   
   def index
     @items = Item.all.order("created_at DESC")
@@ -51,8 +52,14 @@ class ItemsController < ApplicationController
 
    def belong_item
     unless current_user == @item.user
-      redirect_to action: :index
+      redirect_to "/"
     end
    end
 
+ 
+   def soldout_item
+    if @item.buy.present? 
+      redirect_to "/"
+    end
+  end
 end
