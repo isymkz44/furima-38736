@@ -8,7 +8,7 @@ RSpec.describe BuyAddress, type: :model do
       @buy_address = FactoryBot.build(:buy_address, user_id: @user.id, item_id: @item.id)
     end
     context '購入ができる場合' do
-      it '郵便番号、都道府県、市町村区、番地、建物名、電話番号が正しく入力されていれば保存できる' do
+      it 'カード情報、郵便番号、都道府県、市町村区、番地、建物名、電話番号が正しく入力されていれば保存できる' do
         expect(@buy_address).to be_valid
       end
       it '建物名は入力がなくても保存できる' do
@@ -18,6 +18,11 @@ RSpec.describe BuyAddress, type: :model do
     end
 
     context '購入ができない場合' do
+      it 'カード情報が空の場合は購入できない' do
+        @buy_address.token = ""
+        @buy_address.valid?
+        expect(@buy_address.errors.full_messages).to include("Token can't be blank")
+        end
       it '郵便番号が空の場合は購入できない' do
         @buy_address.postal_code = ""
         @buy_address.valid?
@@ -72,8 +77,6 @@ RSpec.describe BuyAddress, type: :model do
         @buy_address.phone_number = "１２３４５６７８９０"
         @buy_address.valid?
         expect(@buy_address.errors.full_messages).to include("Phone number is invalid")
-      end
-      it '' do
       end
     end
   end
