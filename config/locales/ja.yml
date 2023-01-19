@@ -9,14 +9,6 @@ ja:
         last_name_reading:  メイ(カナ)
         birthday:           生年月日
 
-      address:
-        postal_code:        郵便番号
-        prefecture_id:      都道府県
-        city:               市町村
-        house_number:       町村区
-        building_name:      番地
-        phone_number:       電話番号
-
       item:
         name:               商品名
         description:        商品説明
@@ -26,4 +18,17 @@ ja:
         shipping_date_id:   配送までの日数
         shipping_charge_id: 配送料の負担
         prefecture_id:      都道府県
-      
+        image:              商品画像
+
+  activemodel:
+    attributes:
+      buy_address:
+        postal_code:        郵便番号
+        prefecture_id:      都道府県
+        city:               市町村
+        house_number:       町村区
+        building_name:      番地
+        phone_number:       電話番号
+        token:              カード情報
+
+        
