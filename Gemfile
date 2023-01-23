@@ -77,3 +77,5 @@ gem "pry-rails"
 gem 'faker'
 
 gem 'payjp'
+
+gem 'rails-i18n'
