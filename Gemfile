@@ -76,4 +76,12 @@ gem "pry-rails"
 
 gem 'faker'
 
+<<<<<<< Updated upstream
 gem 'payjp'
+=======
+gem 'payjp'
+
+gem 'rails-i18n'
+
+gem "aws-sdk-s3", require: false
+>>>>>>> Stashed changes
